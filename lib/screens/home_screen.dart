@@ -147,7 +147,7 @@ class HomeScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
-                  "assets/svg/profile.svg",
+                  "assets/svg/requests-Clr.svg",
                   
                   color: AppColors.primaryColor,
                 ),
