@@ -9,5 +9,11 @@ class AppColors {
 
   // ignore: prefer_typing_uninitialized_variables, strict_top_level_inference
   static var inactiveColor;
+
+  // ignore: prefer_typing_uninitialized_variables, strict_top_level_inference
+  static var primary;
+
+  // ignore: prefer_typing_uninitialized_variables, strict_top_level_inference
+  static var black;
  
 }

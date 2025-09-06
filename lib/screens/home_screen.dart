@@ -1,5 +1,5 @@
 // ignore_for_file: deprecated_member_use
-
+import 'package:professional_application/screens/settings_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -24,12 +24,12 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 const CardUserDataComponent(
-                  userName: "زيد الصالح",
-                  userImage: "assets/images/abdalrzak.jpg",
+                  userName: "محمد العلي ",
+                  userImage: "assets/images/image_card.png",
                 ),
                 const SizedBox(height: 16),
                 Expanded(
-                  child: _buildCurrentScreen(prov.currentScreenIndex),
+                  child: _buildCurrentScreen(prov.currentScreenIndex, context),
                 ),
               ],
             );
@@ -45,16 +45,16 @@ class HomeScreen extends StatelessWidget {
 
     return ConvexAppBar(
       style: TabStyle.react,
-      backgroundColor: AppColors.whiteColor,
-      color: AppColors.blackSecondary,
-      activeColor: AppColors.primaryColor,
+      backgroundColor: Colors.white,
+      color: Colors.black54,
+      activeColor: AppColors.primary,
       items: [
         TabItem(
           icon: SvgPicture.asset(
             "assets/svg/home.svg",
             color: provHome.currentScreenIndex == 0
-                ? AppColors.primaryColor
-                : AppColors.blackSecondary,
+                ? AppColors.primary
+                : Colors.black54,
           ),
           title: 'الرئيسية',
           activeIcon: Stack(
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   "assets/svg/home-Clr.svg",
-                  color: AppColors.primaryColor,
+                  color: AppColors.primary,
                 ),
               ),
               if (provHome.currentScreenIndex == 0)
@@ -81,8 +81,8 @@ class HomeScreen extends StatelessWidget {
           icon: SvgPicture.asset(
             "assets/svg/services-icon.svg",
             color: provHome.currentScreenIndex == 1
-                ? AppColors.primaryColor
-                : AppColors.blackSecondary,
+                ? AppColors.primary
+                : Colors.black54,
           ),
           title: 'الخدمات',
           activeIcon: Stack(
@@ -91,7 +91,7 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   "assets/svg/services-icon-Clr.svg",
-                  color: AppColors.primaryColor,
+                  color: AppColors.primary,
                 ),
               ),
               if (provHome.currentScreenIndex == 1)
@@ -111,8 +111,8 @@ class HomeScreen extends StatelessWidget {
               SvgPicture.asset(
                 "assets/svg/requests.svg",
                 color: provHome.currentScreenIndex == 2
-                    ? AppColors.primaryColor
-                    : AppColors.blackSecondary,
+                    ? AppColors.primary
+                    : Colors.black54,
               ),
               if (requestsProvider.hasRequests)
                 Positioned(
@@ -148,8 +148,7 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   "assets/svg/requests-Clr.svg",
-                  
-                  color: AppColors.primaryColor,
+                  color: AppColors.primary,
                 ),
               ),
               if (provHome.currentScreenIndex == 2)
@@ -192,8 +191,8 @@ class HomeScreen extends StatelessWidget {
           icon: SvgPicture.asset(
             "assets/svg/setting.svg",
             color: provHome.currentScreenIndex == 3
-                ? AppColors.primaryColor
-                : AppColors.blackSecondary,
+                ? AppColors.primary
+                : Colors.black54,
           ),
           title: 'الإعدادات',
           activeIcon: Stack(
@@ -202,7 +201,7 @@ class HomeScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   "assets/svg/setting-Clr.svg",
-                  color: AppColors.primaryColor,
+                  color: AppColors.primary,
                 ),
               ),
               if (provHome.currentScreenIndex == 3)
@@ -221,7 +220,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCurrentScreen(int screenIndex) {
+  Widget _buildCurrentScreen(int screenIndex, BuildContext context) {
     switch (screenIndex) {
       case 0:
         return _buildHomeContent();
@@ -230,7 +229,7 @@ class HomeScreen extends StatelessWidget {
       case 2:
         return const RequestsScreen();
       case 3:
-        return _buildSettingsContent();
+        return const SettingsScreen();
       default:
         return _buildHomeContent();
     }
@@ -249,15 +248,6 @@ class HomeScreen extends StatelessWidget {
     return const Center(
       child: Text(
         'محتويات شاشة الخدمات',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-
-  Widget _buildSettingsContent() {
-    return const Center(
-      child: Text(
-        'محتويات شاشة الإعدادات',
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
